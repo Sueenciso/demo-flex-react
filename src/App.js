@@ -3,16 +3,17 @@ import "./App.css";
 
 function App() {
   const styles = {
-    "flex-direction": "row",
-    "justify-content": "center",
-    "align-items": "stretch",
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "alignItems": "stretch",
   };
 
-  const { values, setValues } = useState(styles)
+  const  [values, setValues]  = useState(styles)
 
   const updateProperties = (e, property) => {
     const newValues ={...values}
     newValues[property]= e.target.value
+    console.log(newValues)
     setValues(newValues);
   }
 
@@ -21,7 +22,7 @@ function App() {
       <h1>Flexbox magic</h1>
       {JSON.stringify(values)}
       <div className="demo-wrapper">
-        <div className="demo-container">
+        <div className="demo-container" style={values}>
           <div className="item one">one</div>
           <div className="item two">two</div>
           <div className="item three">three</div>
@@ -36,7 +37,7 @@ function App() {
         <span>Flex direction:</span>
         <select
           onChange={(e) => {
-            updateProperties(e, "flex-direction");
+            updateProperties(e, "flexDirection");
           }}
         >
           <option value="row">Row</option>
@@ -50,7 +51,7 @@ function App() {
         <span>Justify Content:</span>
         <select
           onChange={(e) => {
-            updateProperties(e, "justify-content");
+            updateProperties(e, "justifyContent");
           }}>
           <option value="center">Center</option>
           <option value="start">Start</option>
@@ -64,7 +65,7 @@ function App() {
         <span>Align Items</span>
         <select
           onChange={(e) => {
-            updateProperties(e, "align-items");
+            updateProperties(e, "alignItems");
           }}>
           <option value="stretch">Stretch</option>
           <option value="start">Start</option>
